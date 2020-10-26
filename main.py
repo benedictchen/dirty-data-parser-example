@@ -14,12 +14,12 @@ def repair(exception, s):
 	Returns:
 		A partially fixed JSON string.
 	"""
-  unexp = int(re.findall(r'\(char (\d+)\)', str(exception))[0])
-  unesc = s.rfind(r'"', 0, unexp)
-  s = s[:unesc] + r'\"' + s[unesc+1:]
-  closg = s.find(r'"', unesc + 2)
-  s = s[:closg] + r'\"' + s[closg+1:]
-  return s
+	unexp = int(re.findall(r'\(char (\d+)\)', str(exception))[0])
+	unesc = s.rfind(r'"', 0, unexp)
+	s = s[:unesc] + r'\"' + s[unesc+1:]
+	closg = s.find(r'"', unesc + 2)
+	s = s[:closg] + r'\"' + s[closg+1:]
+	return s
 
 def parse_bad_contents(contents):
 	"""Recursively attempts to fix JSON until it succeeds.
@@ -51,8 +51,9 @@ def main():
 				print(e)
 				raise Exception('TOTAL FAIL')
 
+	print('Total results: ', len(results))
 
-	print(len(results))
+	print(results)
 
 if __name__ == '__main__':
 	main()
